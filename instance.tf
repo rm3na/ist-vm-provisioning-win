@@ -9,10 +9,10 @@ data "vsphere_datastore" "datastore" {
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 
-#data "vsphere_resource_pool" "pool" {
-#  name          = var.resource_pool
-#  datacenter_id = data.vsphere_datacenter.dc.id
-#}
+data "vsphere_resource_pool" "pool" {
+  name          = var.resource_pool
+  datacenter_id = data.vsphere_datacenter.dc.id
+}
 
 data "vsphere_network" "network" {
   name          = var.network_name
@@ -43,7 +43,7 @@ resource "vsphere_folder" "vm_folder" {
 resource "vsphere_virtual_machine" "vm_deploy" {
   count            = var.vm_count
   name             = "${var.vm_prefix}-${random_string.folder_name_prefix.id}-${count.index + 1}"
-  #resource_pool_id = data.vsphere_resource_pool.pool.id
+  resource_pool_id = data.vsphere_resource_pool.pool.id
   datastore_id     = data.vsphere_datastore.datastore.id
   folder           = vsphere_folder.vm_folder.path
 
