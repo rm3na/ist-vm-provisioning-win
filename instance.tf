@@ -68,9 +68,10 @@ resource "vsphere_virtual_machine" "vm_deploy" {
   clone {
     template_uuid = data.vsphere_virtual_machine.template.id
     customize {
-      linux_options {
-        host_name = "${var.vm_prefix}-${random_string.folder_name_prefix.id}-${count.index + 1}"
-        domain    = var.vm_domain
+      windows_options {
+        computer_name  = "${var.vm_prefix}-${random_string.folder_name_prefix.id}-${count.index + 1}"
+        workgroup      = "WORKGROUP"
+        admin_password = "ISEisC00L"
       }
       network_interface {}
     }
