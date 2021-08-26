@@ -17,12 +17,14 @@ variable "vsphere_password" {
 variable "datacenter" {
   type = string
   description = "The datacenter the resources will be created in"
+  default = "HX"
 }
 
 
 variable "resource_pool" {
   type = string
   description = "Name of the resource pool"
+  default = "HX"
 }
 
 variable "datastore_name" {
@@ -40,6 +42,7 @@ variable "network_name" {
 variable "template_name" {
   type = string
   description = "Name of the template"
+  default = "WinVM-Template"
 }
 
 
@@ -64,6 +67,7 @@ variable "vm_prefix" {
 variable "vm_folder" {
   type = string
   description = "Name of folder"
+  default = "HXPOC"
 }
 
 variable "vm_count" {
@@ -75,4 +79,5 @@ variable "vm_count" {
 variable "vm_domain" {
   type = string
   description = "Domain Name for the virtual machine"
+  default = "nterone.com"
 }
